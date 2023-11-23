@@ -14,7 +14,8 @@ Then('I should see {string} {string} bar at {string}', (statsClass, barClass, st
 });
 
 Then('the descriptions should all be seen after I {string} a few times', (choiceText) => {
-  let descList = {}, count = 0;
+  let descList = {};
+  let count = 0;
 
   function getDescription() {
     choose(choiceText); // click on the 'wait' button
