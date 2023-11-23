@@ -1,5 +1,5 @@
 const { Given, When, Then } = require('@badeball/cypress-cucumber-preprocessor');
-const { choose, chooseUntilLose, chooseUntilChoice, chooseUntilItem } = require('./support/index.js');
+const { choose, chooseMultipleTimes, chooseUntilLose, chooseUntilChoice, chooseUntilItem, playWinPath } = require('./support/index.js');
 
 Given('I am on the start page', () => {
   cy.visit('/');
@@ -34,11 +34,13 @@ When('I choose {string} until I can choose {string}', (choiceText, choiceToSee) 
 
 
 When('I choose {string} {int} times', (choiceText, count) => {
-  for (let i = 0; i < count; i++) {
-    choose(choiceText);
-  }
+  chooseMultipleTimes(choiceText, count);
 });
 
 When('I choose {string} until I have {string} in my bag', (choiceText, itemText) => {
   chooseUntilItem(choiceText, itemText, 20);
+});
+
+When('I play the win path 1 times and save fail count', () => {
+  playWinPath();
 });

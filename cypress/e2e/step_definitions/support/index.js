@@ -59,4 +59,27 @@ function choose(choice) {
   cy.get('.choices').contains(choice, { matchCase: false }).click();
 }
 
-module.exports = { choose, chooseUntilLose, chooseUntilChoice, chooseUntilItem };
+function chooseMultipleTimes(choice, count) {
+  for (let i = 0; i < count; i++) {
+    choose(choice);
+  }
+}
+
+function playWinPath() {
+  choose('go south');
+  choose('go west');
+  chooseUntilChoice('wait', 'jam with the band', 20);
+  choose('jam with the band');
+  choose('go east');
+  chooseMultipleTimes('go north', 2);
+  choose('go east');
+  chooseUntilItem('wait', 'a can of beer', 20);
+  choose('go west');
+  choose('go south');
+  choose('enter the cafe');
+  chooseMultipleTimes('buy an espresso', 3);
+  chooseUntilChoice('wait', 'give beer to barista', 20);
+  choose('give beer to barista');
+}
+
+module.exports = { choose, chooseMultipleTimes, chooseUntilLose, chooseUntilChoice, chooseUntilItem, playWinPath };

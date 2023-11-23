@@ -26,8 +26,8 @@ Feature: Replay
     And I choose "play again"
     Then I should see the start page
 
-# Scenario: Play the win path multiple times
-#   Given I am on the start page
-#   When I play the win path 20 times and save fail count
-#   Then I should have less than 5 fails
+  Scenario: Play the win path multiple times
+    Given I am on the start page
+    When I play the win path 1 times and save fail count
+# Then I should have less than 5 fails
 
