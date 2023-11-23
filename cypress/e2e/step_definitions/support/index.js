@@ -2,10 +2,11 @@
 
 
 function chooseUntilLose(choice, maxLoops, currentLoop = 0) {
-  cy.get('.choices').contains(choice, { matchCase: false }).click();
 
   // Make sure we don't get stuck in an infinite loop
   if (currentLoop >= maxLoops) { throw new Error('Did not die. Too many loops'); }
+
+  choose(choice);
 
   // Check if we are dead yet
   cy.get('.health .val').then((element) => {
@@ -23,8 +24,7 @@ function chooseUntilChoice(choice, choiceToSee, maxLoops, currentLoop = 0) {
   // Make sure we don't get stuck in an infinite loop
   if (currentLoop >= maxLoops) { throw new Error('Did not see choice. Too many loops'); }
 
-  cy.get('.choices').contains(choice, { matchCase: false }).click();
-
+  choose(choice);
   // Check if choiceToSee is there
   cy.get('.choices ul li').then((elements) => {
     const choicesJq = elements.els[0];
@@ -45,7 +45,7 @@ function chooseUntilItem(choice, item, maxLoops, currentLoop = 0) {
   // Make sure we don't get stuck in an infinite loop
   if (currentLoop >= maxLoops) { throw new Error('Did not see item. Too many loops'); }
 
-  cy.get('.choices').contains(choice, { matchCase: false }).click();
+  choose(choice);
 
   cy.get('.bag-content span').then((elements) => {
     const bagContent = elements.els[0].text().toLowerCase();
