@@ -7,4 +7,3 @@ Then('I should see {string} value at {int}', (statsClass, statsValue) => {
 Then('I should see {string} in {string}', (statsContent, statsClass) => {
     cy.get(`.${statsClass} .bag-content > span`).should('have.text', `${statsContent}`);
 });
-
