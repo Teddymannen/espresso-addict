@@ -1,6 +1,6 @@
 Feature: Testing gameplay functions
 
-  Scenario: Player stats exist
+  Scenario: Initial stats exist and have set values
     Given I am on the start page
     Then I should see "health" value at 50
     And I should see "money" value at 10
