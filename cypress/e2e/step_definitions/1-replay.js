@@ -42,5 +42,6 @@ When('I choose {string} until I have {string} in my bag', (choiceText, itemText)
 });
 
 When('I play the win path 1 times and save fail count', () => {
-  playWinPath();
+  cy.wait(1000);
+  playWinPath(1);
 });
