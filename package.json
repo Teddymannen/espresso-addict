@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "cypress run --browser chrome",
     "test-ui": "cypress open"
   },
@@ -21,7 +22,8 @@
   "dependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^19.1.1",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
-    "cypress": "^13.6.0"
+    "cypress": "^13.6.0",
+    "express": "^4.18.2"
   },
   "cypress-cucumber-preprocessor": {
     "stepDefinitions": [
