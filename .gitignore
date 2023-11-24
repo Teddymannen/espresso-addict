@@ -126,3 +126,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 cypress/downloads/downloads.htm.crdownload
+.vscode/settings.json
