@@ -28,7 +28,7 @@ Feature: World
 
   Scenario: Fail information
     Given I am on the start page
-    When I click "Wait" until I lose
+    When I click "wait" until I lose
     Then I should see a description
     And I should see a picture with the src "imgs/dead.jpg"
 
