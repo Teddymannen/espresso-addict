@@ -6,7 +6,11 @@
   "scripts": {
     "start": "node server.js",
     "test": "cypress run --browser chrome",
-    "test-ui": "cypress open"
+    "test-ui": "cypress open",
+    "test-only": "cucumber-js selenium/features --require selenium/features/support --require selenium/features/step-definitions --world-parameters \"{\\\"browserName\\\":\\\"chrome\\\"}\" --format json:selenium/results/chrome.json",
+    "test-report": "node ./selenium/generate-report",
+    "open-test-report": "start selenium/results/chrome.html",
+    "test-selenium": "npm run test-only && npm run test-report && npm run open-test-report"
   },
   "repository": {
     "type": "git",
