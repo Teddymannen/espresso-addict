@@ -13,7 +13,7 @@ Then('I should see {string} {string} bar at {string}', (statsClass, barClass, st
   cy.get(`.${statsClass} .${barClass} > div`).should('have.attr', 'style', `${styleWidth}`);
 });
 
-Then('the descriptions should all be seen after I {string} a few times', (choiceText) => {
+Then('{int} descriptions should be seen after I {string} a few times', (descriptionCount, choiceText) => {
   let descList = {};
   let count = 0;
 
@@ -25,12 +25,12 @@ Then('the descriptions should all be seen after I {string} a few times', (choice
       let descriptionText = el.els[0].text();
       descList[descriptionText] = true;
       count++;
-      if (Object.keys(descList).length < 3 && count < 20) {
+      if (Object.keys(descList).length < descriptionCount && count < 20) {
         getDescription();
         return;
       }
       cy.log(descList);
-      expect(Object.keys(descList).length).to.equal(3);
+      expect(Object.keys(descList).length).to.equal(descriptionCount);
     });
   }
 

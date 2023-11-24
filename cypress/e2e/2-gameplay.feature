@@ -30,9 +30,17 @@ Feature: Testing gameplay functions
     Then I should see "health" value at 60
     And I should see "health" "progress" bar at "width: 60%;"
 
-  Scenario: All descriptions are shown when waiting
+  Scenario Outline: All descriptions are shown when waiting
     Given I am on the start page
     And the player is invincible
-    When I choose "north"
-    And I choose "east"
-    Then the descriptions should all be seen after I "wait" a few times
+    When I choose all "<directions>"
+    Then <descriptionCount> descriptions should be seen after I "wait" a few times
+
+    Examples:
+      | directions     | descriptionCount |
+      |                | 2                |
+      | north,east     | 3                |
+      | north          | 2                |
+      | south,west     | 3                |
+      | south          | 2                |
+      | enter the cafe | 3                |
