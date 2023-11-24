@@ -8,7 +8,7 @@ Feature: World
     And I should see a picture with the src "imgs/help.jpg"
 
 
-  Scenario Outline: Navigation and information
+  Scenario Outline: Navigation and information (<name>)
     Given I am on the start page
     When I choose all "<directions>"
     Then I should see a description

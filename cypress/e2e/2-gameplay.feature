@@ -30,7 +30,7 @@ Feature: Testing gameplay functions
     Then I should see "health" value at 60
     And I should see "health" "progress" bar at "width: 60%;"
 
-  Scenario Outline: All descriptions are shown when waiting
+  Scenario Outline: All descriptions are shown when waiting at <name>
     Given I am on the start page
     And the player is invincible
     When I choose all "<directions>"
