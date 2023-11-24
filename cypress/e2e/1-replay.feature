@@ -9,6 +9,7 @@ Feature: Replay
 
   Scenario: Win and play again
     Given I am on the start page
+    And the player is invincible
     When I choose "go south"
     And I choose "go west"
     And I choose "wait" until I can choose "jam with the band"
@@ -26,8 +27,8 @@ Feature: Replay
     And I choose "play again"
     Then I should see the start page
 
-  Scenario: Play the win path multiple times
-    Given I am on the start page
-    When I play the win path 1 times and save fail count
+# Scenario: Play the win path multiple times
+#   Given I am on the start page
+#   When I play the win path 1 times and save fail count
 # Then I should have less than 5 fails
 

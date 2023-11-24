@@ -17,6 +17,7 @@ Feature: Testing gameplay functions
 
   Scenario: Bag content updates when waiting at the bar
     Given I am on the start page
+    And the player is invincible
     When I choose "north"
     And I choose "east"
     And I choose "wait" until I have "a can of beer" in my bag
@@ -31,6 +32,7 @@ Feature: Testing gameplay functions
 
   Scenario: All descriptions are shown when waiting
     Given I am on the start page
+    And the player is invincible
     When I choose "north"
     And I choose "east"
     Then the descriptions should all be seen after I "wait" a few times

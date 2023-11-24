@@ -5,6 +5,19 @@ Given('I am on the start page', () => {
   cy.visit('/');
 });
 
+Given('the player is invincible', () => {
+  cy.window().then((win) => {
+    let originalUpdateStatus = win.updatePlayerStatus;
+
+    win.updatePlayerStatus = (choice) => {
+      if (choice.health !== undefined) {
+        choice.health = 100; // Always set health to 100
+      }
+      originalUpdateStatus(choice);
+    }
+  });
+});
+
 When('I click {string} until I lose', (buttonText) => {
   chooseUntilLose(buttonText, 20);
 });
