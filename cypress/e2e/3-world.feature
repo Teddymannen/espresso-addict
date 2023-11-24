@@ -15,13 +15,13 @@ Feature: World
     And I should see a picture with the src "<imageSrc>"
 
     Examples:
-      | directions     | imageSrc                   |
-      |                | imgs/cloud-forest-cafe.jpg |
-      | north,east     | imgs/bar.jpg               |
-      | north          | imgs/street.jpg            |
-      | south,west     | imgs/music-scene.jpg       |
-      | south          | imgs/country-side.jpg      |
-      | enter the cafe | imgs/inside-cafe.jpg       |
+      | name         | directions     | imageSrc                   |
+      | outside cafe |                | imgs/cloud-forest-cafe.jpg |
+      | bar          | north,east     | imgs/bar.jpg               |
+      | street       | north          | imgs/street.jpg            |
+      | music        | south,west     | imgs/music-scene.jpg       |
+      | country side | south          | imgs/country-side.jpg      |
+      | inside cafe  | enter the cafe | imgs/inside-cafe.jpg       |
 
   Scenario: Win information
     Given I am on the start page

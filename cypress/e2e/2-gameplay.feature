@@ -37,10 +37,10 @@ Feature: Testing gameplay functions
     Then <descriptionCount> descriptions should be seen after I "wait" a few times
 
     Examples:
-      | directions     | descriptionCount |
-      |                | 2                |
-      | north,east     | 3                |
-      | north          | 2                |
-      | south,west     | 3                |
-      | south          | 2                |
-      | enter the cafe | 3                |
+      | name         | directions     | descriptionCount |
+      | outside cafe |                | 2                |
+      | bar          | north,east     | 3                |
+      | street       | north          | 2                |
+      | music        | south,west     | 3                |
+      | country side | south          | 2                |
+      | inside cafe  | enter the cafe | 3                |
