@@ -54,6 +54,6 @@ When('I choose {string} until I have {string} in my bag', (choiceText, itemText)
   chooseUntilItem(choiceText, itemText, 20);
 });
 
-When('I play the win path 1 times and save fail count', () => {
+When('I play the win path', () => {
   playWinPath();
 });

@@ -26,7 +26,7 @@ Feature: World
   Scenario: Win information
     Given I am on the start page
     And the player is invincible
-    When I play the win path 1 times and save fail count
+    When I play the win path
     Then I should see a description
     And I should see a picture with the src "imgs/win.jpg"
 
