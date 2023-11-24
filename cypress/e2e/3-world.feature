@@ -11,7 +11,7 @@ Feature: World
   Scenario Outline: Navigation and information
     Given I am on the start page
     When I choose all "<directions>"
-    Then I should see a desctiption
+    Then I should see a description
     And I should see a picture with the src "<imageSrc>"
 
     Examples:
@@ -34,11 +34,3 @@ Feature: World
     When I click "wait" until I lose
     Then I should see a description
     And I should see a picture with the src "imgs/dead.jpg"
-
-
-
-# Kolla så att vägarna leder till rätt ställe --
-# Help-knapp? --
-# Det finns alltid en bild --
-# Det finns alltid en text/beskrivning --
-# Glöm inte dö/vinn scenen
