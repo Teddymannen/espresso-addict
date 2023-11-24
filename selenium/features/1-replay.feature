@@ -7,25 +7,25 @@ Feature: Replay
     Then I should see the start page
     And I should have more than 0 health
 
-# Scenario: Win and play again
-#   Given I am on the start page
-#   And the player is invincible
-#   When I choose "go south"
-#   And I choose "go west"
-#   And I choose "wait" until I can choose "jam with the band"
-#   And I choose "jam with the band"
-#   And I choose "go east"
-#   And I choose "go north" 2 times
-#   And I choose "go east"
-#   And I choose "wait" until I have "a can of beer" in my bag
-#   And I choose "go west"
-#   And I choose "go south"
-#   And I choose "enter the cafe"
-#   And I choose "buy an espresso" 3 times
-#   And I choose "wait" until I can choose "give beer to barista"
-#   And I choose "give beer to barista"
-#   And I choose "play again"
-#   Then I should see the start page
+  Scenario: Win and play again
+    Given I am on the start page
+    And the player is invincible
+    When I choose "Go south"
+    And I choose "Go west"
+    And I choose "Wait" until I can choose "Jam with the band"
+    And I choose "Jam with the band"
+    And I choose "Go east"
+    And I choose "Go north" 2 times
+    And I choose "Go east"
+    And I choose "Wait" until I have "a can of beer" in my bag
+    And I choose "Go west"
+    And I choose "Go south"
+    And I choose "Enter the cafe"
+    And I choose "Buy an espresso" 3 times
+    And I choose "Wait" until I can choose "Give beer to barista"
+    And I choose "Give beer to barista"
+    And I choose "Play again"
+    Then I should see the start page
 
 # Scenario: Play the win path multiple times
 #   Given I am on the start page
