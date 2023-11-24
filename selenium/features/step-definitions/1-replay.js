@@ -9,7 +9,7 @@ Given('I am on the start page', async function () {
 When('I click {string} until I lose', async function (buttonText) {
   for (let i = 0; i < 20; i++) {
     // click the button
-    await this.driver.findElement(By.xpath(`//*[contains(text(), '${buttonText}')]`)).click();
+    await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${buttonText}')]`)).click();
     // check how much health we have
     let health = await this.driver.findElement(By.css('.health .val')).getText();
     if (health === '0') {
@@ -20,9 +20,7 @@ When('I click {string} until I lose', async function (buttonText) {
 });
 
 When('I click {string}', async function (buttonText) {
-  // click the button inside class "choices" and text
-  let button = await this.driver.findElement(By.xpath(`//*[contains(text(), '${buttonText}')]`));
-  await button.click();
+  await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${buttonText}')]`)).click();
 });
 
 Then('I should see the start page', async function () {
