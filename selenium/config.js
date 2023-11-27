@@ -8,5 +8,5 @@ module.exports = {
   // max execution time
   timeout: 30000,
   // to run in 'slow motion' increase this time
-  sleepBetweenSteps: 0
+  sleepBetweenSteps: 50
 };
