@@ -27,8 +27,10 @@ Feature: Replay
     And I choose "play again"
     Then I should see the start page
 
+# We test the following scenario with selenium
+
 # Scenario: Play the win path multiple times
 #   Given I am on the start page
 #   When I play the win path 1 times and save fail count
-# Then I should have less than 5 fails
+#   Then I should have less than 5 fails
 
