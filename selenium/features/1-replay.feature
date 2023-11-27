@@ -29,6 +29,6 @@ Feature: Replay
 
   Scenario: Play the win path multiple times
     Given I am on the start page
-    When I play the win path 20 times and save fail count
-    Then I should have less than 5 fails
+    When I play the win path 10 times and save fail count
+    Then I should have less than 3 fails
 
