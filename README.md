@@ -44,7 +44,7 @@ npm run test-selenium
 
 ## Github Actions
 
-We run the cypress tests using Github Actions. The tests are run on every push or pull request to the main branch.
+We run the cypress tests and the selenium tests using Github Actions. The tests are run on every push or pull request to the main branch.
 
 ## Frameworks
 
