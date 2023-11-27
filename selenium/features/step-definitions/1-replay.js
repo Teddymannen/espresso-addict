@@ -1,6 +1,7 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const { By, until, Key } = require('selenium-webdriver');
 const { expect } = require('chai');
+const { choose, chooseMultipleTimes, chooseUntilChoice, chooseUntilItem, playWinPathTimes } = require('../common/game-nav');
 
 Given('I am on the start page', async function () {
   await this.driver.get('http://localhost:3000/');
@@ -9,7 +10,7 @@ Given('I am on the start page', async function () {
 When('I click {string} until I lose', async function (buttonText) {
   for (let i = 0; i < 20; i++) {
     // click the button
-    await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${buttonText}')]`)).click();
+    await choose(this.driver, buttonText);
     // check how much health we have
     let health = await this.driver.findElement(By.css('.health .val')).getText();
     if (health === '0') {
@@ -20,7 +21,8 @@ When('I click {string} until I lose', async function (buttonText) {
 });
 
 When('I click {string}', async function (buttonText) {
-  await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${buttonText}')]`)).click();
+  // await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${buttonText}')]`)).click();
+  await choose(this.driver, buttonText);
 });
 
 Then('I should see the start page', async function () {
@@ -52,42 +54,27 @@ Given('the player is invincible', async function () {
 });
 
 When('I choose {string}', async function (choice) {
-  await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${choice}')]`)).click();
+  await choose(this.driver, choice);
 });
 
 When('I choose {string} {int} times', async function (choice, count) {
-  for (let i = 0; i < count; i++) {
-    // click the button
-    await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${choice}')]`)).click();
-  }
+  await chooseMultipleTimes(this.driver, choice, count);
 });
 
 When('I choose {string} until I can choose {string}', async function (choice, choiceToSee) {
-  for (let i = 0; i < 20; i++) {
-    // click the button
-    await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${choice}')]`)).click();
-
-    // check if we can see the choice we want to see
-    let choices = await this.driver.findElements(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${choiceToSee}')]`));
-    if (choices.length > 0) {
-      return; // we can now choose the choice we want to see
-    }
-
-  }
-  expect(false).to.equal(true); // we didn't fint it after 20 clicks
+  await chooseUntilChoice(this.driver, choice, choiceToSee, 20);
 });
 
 When('I choose {string} until I have {string} in my bag', async function (choice, item) {
-  for (let i = 0; i < 20; i++) {
-    // click the button
-    await this.driver.findElement(By.xpath(`//*[@class='choices']/*/*[contains(text(), '${choice}')]`)).click();
+  await chooseUntilItem(this.driver, choice, item, 20);
+});
 
-    // check if we have the item in our bag
-    let items = await this.driver.findElements(By.xpath(`//span[@class='bag-content']/span[contains(text(), '${item}')]`));
-    if (items.length > 0) {
-      return; // we can now have the item
-    }
+let failCount = -1;
+When('I play the win path {int} times and save fail count', async function (count) {
+  failCount = await playWinPathTimes(this.driver, count);
+});
 
-  }
-  expect(false).to.equal(true); // we didn't fint it after 20 clicks
+Then('I should have less than {int} fails', async function (maxFails) {
+  console.log('failCount', failCount);
+  expect(failCount).to.be.lessThan(maxFails);
 });
